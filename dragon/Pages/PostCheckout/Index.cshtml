@@ -1,0 +1,18 @@
+﻿@page
+@model dragon.Pages.PostCheckout.IndexModel
+@{
+    ViewData["Title"] = "Order History";
+}
+<link href="~/css/orderconf.css" rel="stylesheet" />
+<div class="head-container">
+    <h1>Thank you for your purchase!</h1>
+    @if (Model.orderHistory != null)
+    {
+        <p>Your order with order number <strong>@Model.orderHistory.OrderNo</strong> has been successfully processed.</p>
+    }
+    else
+    {
+        <p>Sorry, we couldn't retrieve your order information.</p>
+    }
+    <p>An email confirmation has been sent to you.</p>
+</div>

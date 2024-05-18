@@ -1,0 +1,61 @@
+﻿.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-header {
+    background-color: #ffffff;
+}
+
+.profile-img-container {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    background-color: black;
+    border-radius: 50%;
+   
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+    .profile-img img {
+        width: 100%;
+        height: auto; 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dashboard .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 0 calc(50% - 20px); 
+    margin-right: 20px;
+    height: 300px; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .dashboard .card {
+        flex-basis: 100%; 
+        margin-right: 0;
+    }
+}
+
+

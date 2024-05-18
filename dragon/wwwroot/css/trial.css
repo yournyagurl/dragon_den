@@ -1,0 +1,97 @@
+﻿.Slider {
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0px 0px 10px;
+    background-color: white;
+    width: 100%;
+    margin: 10px;
+    font-family: "Cinzel", serif;
+    font-weight: 400;
+    color: black;
+}
+    .Slider figure {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: 40s slider infinite;
+    }
+
+    .Slider img {
+        flex: 1; /* Use flexbox to fill the available space */
+        width: 100%; /* Ensure image retains its aspect ratio */
+        height: 100%;
+        object-fit: cover; /* Cover ensures the image fills the container while maintaining aspect ratio */
+    }
+
+@keyframes slider {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.card {
+    height: 100%; 
+    background-color: black;
+}
+
+.dish-image {
+    padding: 10px; /* Add padding to the image within the card */
+}
+
+.card-body {
+    font-family: "Cinzel", serif;
+    font-weight: 500;
+    color: white;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 14px; 
+    text-align: center;
+}
+
+.h1, h1 {
+    font-size: 2.5rem;
+    font-family: 'Cinzel';
+    color: white;
+}
+
+.btn{
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: black;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font-family: 'Cinzel';
+    width: 100%;
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}

@@ -1,0 +1,107 @@
+﻿@page
+@model dragon.Pages.Menu.IndexModel
+
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<link href="~/css/menu.css" rel="stylesheet" />
+
+<h1>Our Menu</h1>
+
+@if (Model.Category != null)
+{
+    <!-- Buttons for specific categories -->
+    <div class="row mb-4 category-buttons">
+        @foreach (var category in Model.Category)
+        {
+            <div class="col-lg-2">
+                <a href="#@category.CatName" class="btn-jump-to-cat">@category.CatName</a>
+            </div>
+        }
+    </div>
+
+    <h1>OUR SPECIALS</h1>
+    <div class="specials-container">
+        <div class="row mb-4">
+            @foreach (var item in Model.Dish)
+            {
+                @if (item.IsSpecial)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div class="card text-center h-100 position-relative">
+                            <div class="card-content d-flex flex-column justify-content-center">
+                                <div class="card-body">
+                                    <div class="avatar avatar-md bg-rgba-primary p-50 m-0 mb-1">
+                                        <div class="avatar-content">
+                                            <i class="feather icon-user-plus text-primary font-large-1"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-bold-700">@item.DishName</h3>
+                                    <h3 class="text-bold-700">@item.ChineseTranslation</h3>
+                                    @if (item.DishImage != null)
+                                    {
+                                        <div class="dish-image-container mb-1">
+                                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.DishImage)" class="card-img-top" alt="@item.DishName">
+                                        </div>
+                                    }
+                                    <p class="mb-1 line-ellipsis">@item.Description</p>
+                                    <p class="mb-1 line-ellipsis">£ @item.DishPrice</p>
+                                </div>
+                                <form method="post" asp-page-handler="Buy" asp-route-itemID="@item.DishId">
+                                    <button type="submit" class="btn btn-add-to-cart">Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Category sections -->
+    @foreach (var category in Model.Category)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="@category.CatName">
+                    <h2>@category.CatName</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in category.Dishes)
+            {
+                @if (item.Availability)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div class="card text-center h-100 position-relative">
+                            <div class="card-content d-flex flex-column justify-content-center">
+                                <div class="card-body">
+                                    <div class="avatar avatar-md bg-rgba-primary p-50 m-0 mb-1">
+                                        <div class="avatar-content">
+                                            <i class="feather icon-user-plus text-primary font-large-1"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-bold-700">@item.DishName</h3>
+                                    <h3 class="text-bold-700">@item.ChineseTranslation</h3>
+                                    @if (item.DishImage != null)
+                                    {
+                                        <div class="dish-image-container mb-1">
+                                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.DishImage)" class="card-img-top" alt="@item.DishName">
+                                        </div>
+                                    }
+                                    <p class="mb-1 line-ellipsis">@item.Description</p>
+                                    <p class="mb-1 line-ellipsis">£ @item.DishPrice</p>
+                                </div>
+                                <form method="post" asp-page-handler="Buy" asp-route-itemID="@item.DishId">
+                                    <button type="submit" class="btn btn-add-to-cart">Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+}

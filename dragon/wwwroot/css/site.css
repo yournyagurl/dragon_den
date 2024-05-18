@@ -1,0 +1,37 @@
+html {
+    font-size: 16px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #b01f24;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}
+
+.navbar {
+    background-image: url('../images/logoreal.png');
+    font-size: 16px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}
+
+.footer {
+    background-image: url('../images/logoreal.png');
+    font-size: 16px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}

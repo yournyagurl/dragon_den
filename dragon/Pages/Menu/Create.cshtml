@@ -1,0 +1,81 @@
+﻿@page
+@using dragon.Models
+@model dragon.Pages.Menu.CreateModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add New Item</h1>
+
+<h4>Dish</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dish.DishName" class="control-label"></label>
+                <input asp-for="Dish.DishName" class="form-control" />
+                <span asp-validation-for="Dish.DishName" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dish.ChineseTranslation" class="control-label"></label>
+                <input asp-for="Dish.ChineseTranslation" class="form-control" />
+                <span asp-validation-for="Dish.ChineseTranslation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.DishPrice" class="control-label"></label>
+               £ <input asp-for="Dish.DishPrice" class="form-control" />
+                <span asp-validation-for="Dish.DishPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Description" class="control-label"></label>
+                <input asp-for="Dish.Description" class="form-control" />
+                <span asp-validation-for="Dish.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.CategoryId" class="control-label"></label>
+                <select asp-for="Dish.CategoryId" class="form-control" asp-items="@(new SelectList(ViewData["Categories"] as IEnumerable<Cat>, "Id", "CatName"))">
+                    <option value="">Select Category</option>
+                </select>
+                <span asp-validation-for="Dish.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.DishImage" class="control-label"></label>
+                <input type="file" id="file1" name="file1" accept="image/*" class="form-control-file" />
+                <span asp-validation-for="Dish.DishImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.DishImageDesc" class="control-label"></label>
+                <input asp-for="Dish.DishImageDesc" class="form-control" />
+                <span asp-validation-for="Dish.DishImageDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Dish.IsSpecial" /> @Html.DisplayNameFor(model => model.Dish.IsSpecial)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Dish.Availability" /> @Html.DisplayNameFor(model => model.Dish.Availability)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Admin/MenuManager">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

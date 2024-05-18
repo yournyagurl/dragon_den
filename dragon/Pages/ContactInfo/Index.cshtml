@@ -1,0 +1,41 @@
+﻿@page
+@model Pages.ContactInfo.IndexModel
+@{
+    ViewData["Title"] = "Contact";
+}
+<link href="c:\users\yourn\source\repos\dragon\dragon\wwwroot\css\contactpage.css" rel="stylesheet" />
+
+
+
+<h1>Contact Us</h1>
+<div class="contact-form">
+<form method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        <label asp-for="ContactCentre.Name"></label>
+        <input asp-for="ContactCentre.Name" class="form-control" />
+        <span asp-validation-for="ContactCentre.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactCentre.Email"></label>
+        <input asp-for="ContactCentre.Email" class="form-control" />
+        <span asp-validation-for="ContactCentre.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactCentre.Subject"></label>
+        <textarea asp-for="ContactCentre.Subject" class="form-control"></textarea>
+        <span asp-validation-for="ContactCentre.Subject" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactCentre.Message"></label>
+        <textarea asp-for="ContactCentre.Message" class="form-control"></textarea>
+        <span asp-validation-for="ContactCentre.Message" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>

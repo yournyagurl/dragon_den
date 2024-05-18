@@ -1,0 +1,55 @@
+﻿@page
+@model dragon.Pages.CheckoutPage.IndexModel
+
+<link href="~/css/cart.css" rel="stylesheet" />
+
+<h1>Checkout</h1>
+
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+    <div class="alert alert-info" role="alert">
+        Your cart is empty.
+    </div>
+}
+else
+{
+    <form method="post" id="checkoutForm">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            var subtotal = item.DishPrice * item.Quantity;
+                            <tr>
+                                <td>@item.DishName</td>
+                                <td>£@item.DishPrice</td>
+                                <td>@item.Quantity</td>
+                                <td>£@subtotal</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <h2>Order Total: £@Model.Total</h2>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button type="submit" class="buy-button" asp-page-handler="Buy">Buy</button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <a class="btn btn-lg" href="/Cart/Index" role="button">Back to Cart</a>
+            </div>
+        </div>
+    </form>
+}

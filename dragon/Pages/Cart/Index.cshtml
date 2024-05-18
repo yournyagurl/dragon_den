@@ -1,0 +1,79 @@
+﻿@page
+@model dragon.Pages.Cart.IndexModel
+<link href="~/css/cart.css" rel="stylesheet" />
+<h1>Shopping Cart</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @if (Model.BasketItems.Count == 0)
+            {
+                <div class="alert alert-info" role="alert">
+                    Your cart is empty. Please login to start ordering :D
+                </div>
+            }
+            else
+            {
+                <div class="list-group">
+                    @foreach (var item in Model.BasketItems)
+                    {
+                        <div class="list-group-item">        
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <!-- Display Image -->
+                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Dish.DishImage)" class="img-fluid" alt="@item.Dish.DishName">
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- Display Dish Name, Price, and Quantity -->
+                                    <h5>@item.Dish.DishName</h5>
+                                    <p>Price: £@item.Dish.DishPrice</p>
+                                    <p>Quantity: @item.Quantity</p>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="center">
+                                        <p></p>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <form method="post" asp-page-handler="Increment" asp-route-dishId="@item.DishId" asp-route-basketId="@item.BasketId">
+                                                    <button type="submit" class="btn btn-default btn-number" data-type="minus" data-field="quantity[@item.Id]">
+                                                        <img src="~/images/icons8-add-16.png" />
+                                                    </button>
+                                                </form>
+                                            </span>
+                                            <input type="text" name="quantity[@item.Id]" class="form-control input-number" value="@item.Quantity" min="1" max="10" readonly>
+                                            <span class="input-group-btn">
+                                                <form method="post" asp-page-handler="Decrement" asp-route-dishId="@item.DishId" asp-route-basketId="@item.BasketId">
+                                                    <button type="submit" class="btn btn-default btn-number" data-type="plus" data-field="quantity[@item.Id]">
+                                                        <img src="~/images/icons8-minus-16.png" />
+                                                    </button>
+                                                </form>
+                                            </span>
+                                        </div>
+                                        <p></p>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <!-- Display Total of all Items -->
+            <h4>Total: £@Model.TotalPrice</h4>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <a class="btn btn-lg" href="/Menu/Index" role="button">Continue Shopping</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <a class="btn btn-lg" href="/CheckoutPage/Index" role="button">Checkout</a>
+        </div>
+    </div>
+</div>

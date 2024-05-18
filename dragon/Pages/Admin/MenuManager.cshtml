@@ -1,0 +1,46 @@
+﻿@page
+@model dragon.Pages.Admin.MenuManagerModel
+@{
+    ViewData["Title"] = "Menu Manager";
+}
+<link href="~/css/cardheight.css" rel="stylesheet" />
+<h1>Menu Manager</h1>
+
+<p>
+    <a asp-page="/Menu/Create" class="btn btn-primary">Create New Item</a>
+</p>
+
+<div class="row">
+    @foreach (var dish in Model.Dish)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <!-- Adjust column width -->
+            <div class="card text-center h-100 position-relative">
+                <div class="card-content d-flex flex-column justify-content-center">
+                    <div class="card-body">
+                        <div class="avatar avatar-md bg-rgba-primary p-50 m-0 mb-1">
+                            <div class="avatar-content">
+                                <i class="feather icon-user-plus text-primary font-large-1"></i>
+                            </div>
+                        </div>
+                        <h2 class="text-bold-700">@dish.DishName</h2>
+                        <h2 class="text-bold-700">@dish.ChineseTranslation</h2>
+                        @if (dish.DishImage != null)
+                        {
+                            <div class="dish-image-container mb-1">
+                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(dish.DishImage)" class="card-img-top" alt="@dish.DishName">
+                            </div>
+                        }
+                        <p class="mb-1 line-ellipsis">@dish.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-page="/Menu/Details" asp-route-id="@dish.DishId" class="btn btn-info">Details</a>
+                        <a asp-page="/Menu/Edit" asp-route-id="@dish.DishId" class="btn btn-primary">Edit</a>
+                        <a asp-page="/Menu/Delete" asp-route-id="@dish.DishId" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

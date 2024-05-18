@@ -1,0 +1,21 @@
+﻿.head-container {
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: black;
+    font-family: "Cinzel", serif;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    font-family: "Cinzel", serif;
+}
